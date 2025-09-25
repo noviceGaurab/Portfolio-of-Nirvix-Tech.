@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirvix - Our Works</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
+        /* Header */
+        header {
+            padding: 2vh 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #667eea;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 15vh 0 8vh;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 8vh 0;
+            background: white;
+            border-radius: 2rem 2rem 0 0;
+            margin-top: 4vh;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: #333;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+        .project-card:nth-child(7) { animation-delay: 0.7s; }
+        .project-card:nth-child(8) { animation-delay: 0.8s; }
+        .project-card:nth-child(9) { animation-delay: 0.9s; }
+        .project-card:nth-child(10) { animation-delay: 1.0s; }
+        .project-card:nth-child(11) { animation-delay: 1.1s; }
+        .project-card:nth-child(12) { animation-delay: 1.2s; }
+        .project-card:nth-child(13) { animation-delay: 1.3s; }
+        .project-card:nth-child(14) { animation-delay: 1.4s; }
+        .project-card:nth-child(15) { animation-delay: 1.5s; }
+        .project-card:nth-child(16) { animation-delay: 1.6s; }
+        .project-card:nth-child(17) { animation-delay: 1.7s; }
+        .project-card:nth-child(18) { animation-delay: 1.8s; }
+        .project-card:nth-child(19) { animation-delay: 1.9s; }
+        .project-card:nth-child(20) { animation-delay: 2.0s; }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-image .loading-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 2rem;
+        }
+
+        .project-image .loading-placeholder .spinner {
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-image .error-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1.5rem;
+        }
+
+        .project-image .error-placeholder i {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .project-image {
+                height: 250px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 5rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification .close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="assets/1.svg" alt="Nirvix Logo" class="logo-image">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="https://staging.nirvixtech.com/" target="_blank" rel="noopener noreferrer">Our Website</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="#projects">Projects</a>
+        <a href="https://staging.nirvixtech.com/" target="_blank" rel="noopener noreferrer">Our Website</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Nirvix Portfolio</h1>
+            <p>Showcasing our exceptional web development projects and digital solutions that drive success for businesses worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Our Works</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Get In Touch</h3>
+                    <p>Ready to start your next project?</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/company/nirvix-tech" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/nirvixtech" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/nirvixtech" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:info@nirvixtech.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Project data
+        const projects = [
+            {
+                title: "Damaru Resources",
+                url: "https://damaruresources.com/",
+                description: "Comprehensive resource management platform"
+            },
+            {
+                title: "Ekathas",
+                url: "https://ekathas.com/",
+                description: "Modern business solutions website"
+            },
+            {
+                title: "Ainaa TV",
+                url: "ainaatv.com/",
+                description: "Entertainment and media platform"
+            },
+            {
+                title: "Khalipana",
+                url: "khalipana.com",
+                description: "Creative digital solutions"
+            },
+            {
+                title: "Nirvix Tech",
+                url: "https://staging.nirvixtech.com/",
+                description: "Technology innovation showcase"
+            },
+            {
+                title: "Serophero Online",
+                url: "https://seropheroonline.com/",
+                description: "Online service platform"
+            },
+            {
+                title: "Global Rising Travel",
+                url: "https://globalrisingtravel.com/",
+                description: "Travel and tourism services"
+            },
+            {
+                title: "Trekking Serophero",
+                url: "trekking.seropheroonline.com",
+                description: "Adventure trekking platform"
+            },
+            {
+                title: "Modern CA Online",
+                url: "https://modernca-online.com/",
+                description: "Professional accounting services"
+            },
+            {
+                title: "Smart Contents Nepal",
+                url: "https://smartcontents.com.np/",
+                description: "Content management solutions"
+            },
+            {
+                title: "Sukilo Properties",
+                url: "http://sukiloproperties.ae/",
+                description: "Real estate platform"
+            },
+            {
+                title: "Zen Career Hub",
+                url: "https://zencareerhub.ae/",
+                description: "Career development platform"
+            },
+            {
+                title: "Level Up Education",
+                url: "http://levelup.edu.np/",
+                description: "Educational services platform"
+            },
+            {
+                title: "Deep Tech Nepal",
+                url: "https://deeptech.com.np/",
+                description: "Advanced technology solutions"
+            },
+            {
+                title: "PSPK Electronics",
+                url: "https://pspkelectronics.ae/",
+                description: "Electronics and technology"
+            },
+            {
+                title: "Harmony Clean Auckland",
+                url: "http://harmonycleanauckland.co.nz/",
+                description: "Cleaning services platform"
+            },
+            {
+                title: "T-Shaped Marketing",
+                url: "https://tshapedmarketing.com/",
+                description: "Marketing and advertising solutions"
+            },
+            {
+                title: "Techunter Hub",
+                url: "https://www.techunterhub.com/",
+                description: "Technology hunting platform"
+            },
+            {
+                title: "Leaf Travels and Tour",
+                url: "https://leaftravelsandtour.com/",
+                description: "Travel and tour services"
+            },
+            {
+                title: "Andre Vaillancourt",
+                url: "https://andrevaillancourt.com/",
+                description: "Personal portfolio and services"
+            }
+        ];
+
+
+
+
+        // Generate project cards with live previews only
+        function generateProjectCards() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            
+            projects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                
+                // Clean URL
+                let cleanUrl = project.url;
+                if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
+                    cleanUrl = 'https://' + cleanUrl;
+                }
+                
+                projectCard.innerHTML = `
+                    <div class="project-image" style="position: relative; overflow: hidden;">
+                        <div class="loading-placeholder" id="loading-${index}">
+                            <div class="spinner"></div>
+                            <span>Loading live preview...</span>
+                        </div>
+                        <iframe id="iframe-${index}" src="${cleanUrl}" 
+                                style="width: 200%; height: 200%; border: none; transform: scale(0.5); transform-origin: top left; position: absolute; top: 0; left: 0; display: none; pointer-events: none;"
+                                loading="eager"
+                                sandbox="allow-scripts allow-same-origin"
+                                scrolling="no"
+                                onload="handleIframeLoad(${index})"
+                                onerror="handleIframeError(${index})"
+                                referrerpolicy="no-referrer">
+                        </iframe>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="project-link">
+                            Visit Site <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                `;
+                
+                projectsGrid.appendChild(projectCard);
+                
+                // Set timeout for iframe loading (reduced to 2 seconds for faster feedback)
+                setTimeout(() => {
+                    const iframe = document.getElementById(`iframe-${index}`);
+                    const loading = document.getElementById(`loading-${index}`);
+                    if (iframe && loading && iframe.style.display === 'none') {
+                        handleIframeTimeout(index);
+                    }
+                }, 2000); // 2 second timeout
+            });
+        }
+
+        // Handle iframe load
+        function handleIframeLoad(index) {
+            const iframe = document.getElementById(`iframe-${index}`);
+            const loading = document.getElementById(`loading-${index}`);
+            if (iframe && loading) {
+                iframe.style.display = 'block';
+                loading.style.display = 'none';
+            }
+        }
+
+        // Handle iframe error
+        function handleIframeError(index) {
+            const iframe = document.getElementById(`iframe-${index}`);
+            const loading = document.getElementById(`loading-${index}`);
+            if (iframe && loading) {
+                loading.innerHTML = `
+                    <div class="error-placeholder">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Live preview unavailable</span>
+                    </div>
+                `;
+                loading.style.display = 'flex';
+                iframe.style.display = 'none';
+            }
+        }
+
+        // Handle iframe timeout
+        function handleIframeTimeout(index) {
+            const iframe = document.getElementById(`iframe-${index}`);
+            const loading = document.getElementById(`loading-${index}`);
+            if (iframe && loading) {
+                loading.innerHTML = `
+                    <div class="error-placeholder">
+                        <i class="fas fa-clock"></i>
+                        <span>Loading timeout</span>
+                        <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.8;">
+                            Click "Visit Site" to view
+                        </div>
+                    </div>
+                `;
+                loading.style.display = 'flex';
+                iframe.style.display = 'none';
+            }
+        }
+
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+
+        // Show notification
+        function showNotification(message) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <button class="close" onclick="this.parentElement.remove()">&times;</button>
+                <div>${message}</div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // Initialize with immediate content display
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hide loading screen immediately
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.classList.add('hidden');
+            }
+            
+            // Show content immediately
+            generateProjectCards();
+            
+            // Observe project cards for animation
+            setTimeout(() => {
+                const projectCards = document.querySelectorAll('.project-card');
+                projectCards.forEach(card => {
+                    observer.observe(card);
+                });
+            }, 50);
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
