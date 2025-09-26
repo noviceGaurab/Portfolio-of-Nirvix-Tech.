@@ -1,5 +1,5 @@
 index.html is the original file
-, whereas index v(0.0.1) was the code shown in the UI review.
+, whereas index v(0.0.1).html was the code shown in the UI review.
 
 
 //Update
