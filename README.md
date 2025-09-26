@@ -1,9 +1,8 @@
-index.html is the original file, whereas revamped_index is the attempted file to do something extra in UI.
+index.html is the original file, whereas index v(0.0.1) was the code shown in the UI review.
 
 //Update
-after first code review, revamped_index did not satisfy the client....thus, it will be version 0.0.1
+after first code review, index v(0.0.1).html did not satisfy the client.
 
 
 
-whereas,
-redo.html will be the new code prepared (version 0.0.2)
+so, index v(0.0.2).html is the new code serving the features that was assigned.
